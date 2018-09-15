@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+<h1>Welcome to TechOps</h1>
+<p class="lead">This is a E-learning portal to learn Linux, Scripting, automation, and technical stuff<br>
+	{% if session.logged_in == NULL %}
+	<a href="/register" class="btn btn-primary btn-lg">Register</a>
+	<a href="/login" class="btn btn-success btn-lg">Login</a>
+	{% endif %}
+</p>
+</div>
+
+
+
+
+{% endblock %}

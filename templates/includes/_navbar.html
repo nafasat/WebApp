@@ -1,0 +1,35 @@
+     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/">MyFlaskApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/articles">Articles</a>
+            </li>          
+
+          </ul>
+            <ul class="nav navbar-nav">
+              {% if session.logged_in %}
+                <li><a class="nav-link active" href="/dashboard">DashBoard</a></li>
+                <li><a class="nav-link nav-item navbar-right active" href="/logout" <span class="sr-only">Logout</span></a></li>
+              {% else %}
+                {% if (request.path != url_for('login')) and (request.path == url_for('register')) %}
+                  <li><a class="nav-link nav-item navbar-right active" href="/login" <span class="sr-only">Login</span></a></li>
+                {% elif (request.path == url_for('login')) and (request.path != url_for('register')) %}
+                  <li><a class="nav-link nav-item navbar-right active" href="/register">Register</a></li>
+                {% else %}
+                  <li><a class="nav-link nav-item navbar-right active" href="/register">Register</a></li>
+                  <li><a class="nav-link nav-item navbar-right active" href="/login">Login</a></li>
+                {% endif %}
+              {% endif %}
+            </ul>
+          </div>
+
+        </div>
+      </nav>
